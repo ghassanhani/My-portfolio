@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghassan — Senior Product Designer</title>
+<meta name="description" content="Ghassan is a senior product designer in Barcelona working across PropTech, e-commerce and branding.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="page">
+
+  <div id="home">
+    <header class="intro">
+      <img class="rise portrait" src="assets/portrait.jpg" alt="Portrait of Ghassan" width="64" height="64">
+      <div class="rise name" style="animation-delay: 80ms">
+        <h1>Ghassan</h1>
+        <p>Senior Product Designer</p>
+      </div>
+      <div class="rise bio" style="animation-delay: 160ms">
+        <p>I'm a senior product designer in Barcelona with nearly ten years across PropTech, e-commerce and branding in Saudi Arabia and Europe. I design Aamar, a Saudi rental management platform, and work with Thiqal on digital products, an AI agent and brand work.</p>
+        <p>I like turning complex workflows into calm, clear products — from design systems and UX audits to the brand around them. Outside product work, I shoot landscape, travel and commercial photography and film across Europe.</p>
+      </div>
+      <nav class="rise contact" aria-label="Contact" style="animation-delay: 240ms">
+        <a href="#">LinkedIn</a><span aria-hidden="true">·</span>
+        <a href="#">Instagram</a><span aria-hidden="true">·</span>
+        <a href="#">Resume</a><span aria-hidden="true">·</span>
+        <a href="mailto:Ghassanhani0@gmail.com">Ghassanhani0@gmail.com</a><span class="phone-no">· +34617309488</span>
+      </nav>
+    </header>
+
+    <section class="work" aria-label="Work">
+      <div class="rise tabs" role="tablist" aria-label="Filter work" style="animation-delay: 320ms">
+        <button type="button" class="pill" role="tab" data-tab="all" aria-selected="true">All</button>
+        <button type="button" class="pill" role="tab" data-tab="mobile" aria-selected="false">Mobile</button>
+        <button type="button" class="pill" role="tab" data-tab="web" aria-selected="false">Web</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+  </div>
+
+  <article id="case" class="case" hidden></article>
+
+  <footer class="foot">© 2026 Ghassan · Barcelona</footer>
+</main>
+<script src="works.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
