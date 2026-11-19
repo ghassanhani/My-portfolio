@@ -75,12 +75,13 @@ button { font: inherit; color: inherit; }
 .pill:hover { color: var(--ink); }
 .pill[aria-selected="true"] { background: var(--pill); border-color: var(--pill); color: var(--ink); }
 
-/* Work grid: every card has the exact same cover, so they read as one set. */
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 24px; }
+/* Work list: one large card per row. Every cover is a screenshot in a browser window
+   (or a phone for app-only work) floating on the same grey panel. */
+.grid { display: grid; grid-template-columns: 1fr; gap: 64px; }
 .card {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -93,39 +94,26 @@ button { font: inherit; color: inherit; }
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: 20px;
+  aspect-ratio: 3 / 2;
+  border-radius: 24px;
   background: var(--panel);
   overflow: hidden;
+  container-type: inline-size;
   transition: background-color 1.2s var(--ease-soft);
 }
-.cover .frame {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line);
-  background: var(--bg);
-  overflow: hidden;
-  transition: transform 1.6s var(--ease-out);
-  will-change: transform;
-}
-.cover .frame img { width: 100%; object-fit: cover; object-position: top; }
-.cover .frame-web { left: 10%; top: 14%; width: 80%; border-radius: 10px; }
-.cover .frame-web .bar { display: flex; align-items: center; gap: 5px; flex: none; height: 22px; padding: 0 10px; border-bottom: 1px solid var(--line-soft); }
-.cover .frame-web .bar i { width: 6px; height: 6px; border-radius: 999px; background: var(--dot); }
-.cover .frame-web .bar b { flex: 1; max-width: 45%; height: 10px; margin: 0 auto; border-radius: 999px; background: var(--panel-hover); }
-.cover .frame-web img { aspect-ratio: 16 / 10; }
-.cover .frame-phone { left: 36%; top: 8%; width: 28%; aspect-ratio: 9 / 19.5; border-radius: 16px; }
-.cover .frame-phone img { height: 100%; }
+.cover .frame { position: absolute; transition: transform 1.6s var(--ease-out); will-change: transform; }
+.cover .frame-web { left: 10%; top: 10%; width: 80%; }
+.cover .frame-phone { left: 37%; top: 8%; width: 26%; }
 /* Hover only ever affects the card under the pointer: no card looks "active" on its own. */
 @media (hover: hover) {
   .card:hover .cover { background-color: var(--panel-hover); }
-  .card:hover .frame { transform: translateY(-8px); }
+  .card:hover .frame { transform: translateY(-6px); }
 }
-.card:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 20px; }
-.card .meta { display: flex; flex-direction: column; gap: 2px; }
-.card .title { font-size: 16px; font-weight: 500; }
-.card .desc { font-size: 15px; line-height: 22px; color: var(--muted); }
+.card:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 24px; }
+.card .meta { display: flex; flex-direction: column; gap: 6px; }
+.card .title { font-size: 18px; line-height: 26px; font-weight: 500; }
+.card .desc { font-size: 17px; line-height: 27px; color: var(--ink); }
+.card .byline { font-size: 15px; line-height: 22px; color: var(--muted); }
 
 .foot { font-size: 13px; color: var(--muted); }
 
@@ -152,14 +140,35 @@ button { font: inherit; color: inherit; }
 .cs-head h1 { margin: 0; font-size: 44px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; }
 .cs-head p { margin: 0; font-size: 18px; line-height: 28px; color: var(--muted); }
 
-.cs-hero { position: relative; width: 100%; aspect-ratio: 16 / 11; border-radius: 24px; background: var(--panel); overflow: hidden; }
-.browser { display: flex; flex-direction: column; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); overflow: hidden; }
-.browser .bar { display: flex; align-items: center; gap: 5px; height: 26px; padding: 0 12px; border-bottom: 1px solid var(--line-soft); }
-.browser .bar i { width: 7px; height: 7px; border-radius: 999px; background: var(--dot); }
-.browser .bar b { flex: 1; max-width: 40%; height: 12px; margin: 0 auto; border-radius: 999px; background: var(--panel-hover); }
+.cs-hero { position: relative; width: 100%; aspect-ratio: 16 / 11; border-radius: 24px; background: var(--panel); overflow: hidden; container-type: inline-size; }
+.browser {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.15cqw;
+  border-radius: 0.9em;
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgb(10 13 18 / 4%), 0 2.4em 4.8em -1.6em rgb(10 13 18 / 14%);
+}
+.browser .bar { display: flex; align-items: center; gap: 1.2em; flex: none; height: 3.4em; padding: 0 1.4em; background: var(--bg); border-bottom: 1px solid var(--line-soft); color: var(--faint); }
+.browser .lights { display: flex; gap: 0.55em; }
+.browser .lights i { width: 0.95em; height: 0.95em; border-radius: 999px; background: #FF5F57; }
+.browser .lights i:nth-child(2) { background: #FEBC2E; }
+.browser .lights i:nth-child(3) { background: #28C840; }
+.browser .nav, .browser .tools { width: 3.4em; height: 1.4em; flex: none; }
+.browser .url { flex: 1; max-width: 46%; height: 1.9em; margin: 0 auto; border-radius: 0.6em; background: var(--pill); }
 .browser img, .browser .empty { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
 .empty { display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--muted); }
-.device { display: block; aspect-ratio: 9 / 19.5; border-radius: 18px; border: 1px solid var(--line); background: var(--bg); overflow: hidden; }
+.device {
+  display: block;
+  aspect-ratio: 9 / 19.5;
+  border-radius: 18px;
+  border: 1px solid var(--line-soft);
+  background: var(--bg);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgb(10 13 18 / 4%), 0 24px 48px -16px rgb(10 13 18 / 16%);
+}
 .device img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .cs-hero .browser, .cs-hero .device { position: absolute; }
 
@@ -174,7 +183,7 @@ button { font: inherit; color: inherit; }
 .cs-text p, .cs-outcome > p { margin: 0; font-size: 16px; line-height: 26px; color: var(--body); }
 
 .cs-fig { margin: 0; display: flex; flex-direction: column; gap: 12px; }
-.cs-fig .panel { border-radius: 24px; background: var(--panel); padding: 40px; }
+.cs-fig .panel { border-radius: 24px; background: var(--panel); padding: 40px; container-type: inline-size; }
 .cs-fig .phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .cs-fig .device { border-radius: 16px; }
 .cs-fig figcaption { font-size: 14px; color: var(--muted); }
@@ -204,8 +213,10 @@ button { font: inherit; color: inherit; }
   .intro { gap: 24px; }
   .phone-no { display: none; }
   .work { gap: 20px; }
-  .grid { grid-template-columns: 1fr; }
+  .grid { gap: 48px; }
   .cover { border-radius: 16px; }
+  .browser { font-size: 1.6cqw; }
+  .device { border-radius: 12px; }
   .card:active .cover { transform: scale(.98); transition: transform .35s cubic-bezier(.2, 0, 0, 1); }
   .case { gap: 36px; }
   .cs-head h1 { font-size: 30px; }

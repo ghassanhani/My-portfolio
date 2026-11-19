@@ -14,20 +14,30 @@
   function img(src, alt, label) {
     return src ? '<img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy">' : '<span class="empty">' + esc(label || '') + '</span>';
   }
-  function browser(src, alt, label, style) {
-    return '<span class="browser"' + (style ? ' style="' + style + '"' : '') + '>' +
-      '<span class="bar" aria-hidden="true"><i></i><i></i><i></i><b></b></span>' + img(src, alt, label) + '</span>';
+  // Browser window chrome, drawn like a desktop browser so screenshots read as real products.
+  var BAR = '<span class="bar" aria-hidden="true">' +
+    '<span class="lights"><i></i><i></i><i></i></span>' +
+    '<svg class="nav" viewBox="0 0 40 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/><path d="m27 3 5 5-5 5" opacity=".4"/></svg>' +
+    '<b class="url"></b>' +
+    '<svg class="tools" viewBox="0 0 40 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9V2M5 5l3-3 3 3M4 8v5h8V8"/><path d="M32 3v10M27 8h10"/></svg>' +
+    '</span>';
+  function browser(src, alt, label, style, cls) {
+    return '<span class="browser' + (cls ? ' ' + cls : '') + '"' + (style ? ' style="' + style + '"' : '') + '>' + BAR + img(src, alt, label) + '</span>';
   }
-  function device(src, alt, style) {
-    return '<span class="device"' + (style ? ' style="' + style + '"' : '') + '>' + (src ? img(src, alt) : '') + '</span>';
+  function device(src, alt, style, cls) {
+    return '<span class="device' + (cls ? ' ' + cls : '') + '"' + (style ? ' style="' + style + '"' : '') + '>' + (src ? img(src, alt) : '') + '</span>';
   }
 
-  // Card cover: the web screenshot in a browser frame, or the mobile one in a phone frame.
+  // Card cover: the web screenshot in a browser window, or the mobile one in a phone frame.
   function cover(w) {
     var phone = w.mobile && (!w.web || w.coverFrame === 'phone');
     return '<span class="cover">' + (phone
-      ? '<span class="frame frame-phone">' + img(w.mobile, w.title + ' app screen') + '</span>'
-      : '<span class="frame frame-web"><span class="bar" aria-hidden="true"><i></i><i></i><i></i><b></b></span>' + img(w.web, w.title + ' website screen') + '</span>') + '</span>';
+      ? device(w.mobile, w.title + ' app screen', '', 'frame frame-phone')
+      : browser(w.web, w.title + ' website screen', '', '', 'frame frame-web')) + '</span>';
+  }
+  function byline(w) {
+    var parts = [w.client, w.role, w.timeline].filter(Boolean);
+    return parts.length ? parts.join(' · ') : (w.tags || '');
   }
 
   // Work list. All cards share one cover layout.
@@ -36,7 +46,7 @@
     grid.innerHTML = list.map(function (w, i) {
       return '<button type="button" class="card rise" data-slug="' + esc(w.slug) + '" aria-label="Open ' + esc(w.title) + ' case study" style="animation-delay:' + (i * 90) + 'ms">' +
         cover(w) +
-        '<span class="meta"><span class="title">' + esc(w.title) + '</span><span class="desc">' + esc(w.desc) + '</span></span>' +
+        '<span class="meta"><span class="title">' + esc(w.title) + '</span><span class="desc">' + esc(w.desc) + '</span><span class="byline">' + esc(byline(w)) + '</span></span>' +
         '</button>';
     }).join('');
   }

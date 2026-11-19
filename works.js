@@ -18,7 +18,7 @@ window.WORKS = [
   {
     slug: 'gymco', title: 'Gymco', tags: 'iOS · Android · Web',
     desc: 'Diet and training for lifters. App, website and Control Center.',
-    platforms: ['web', 'mobile'], coverFrame: 'phone',
+    platforms: ['web', 'mobile'],
     web: IMG + 'gymco-web.jpg', mobile: IMG + 'gymco-today.jpg',
     overview: 'Gymco is a diet and training app for lifters: log food in seconds, train with a plan and keep a streak worth protecting. It is one Flutter codebase for iOS and Android, in English, Arabic (fully right to left) and Spanish, with a website and a Control Center beside it.',
     solution: 'Every screen is drawn from one component kit: the same icons, cards, chips, sheets, keypad, week strip and tab bar, with the same sizes, radii and colours. Food can be logged six ways, including typing a meal the way you would say it or photographing the plate and confirming each food it finds. An optional account backs up the whole diary, and the app never shows ads or sells data.',
