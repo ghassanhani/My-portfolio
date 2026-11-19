@@ -42,7 +42,7 @@
   });
   grid.addEventListener('click', function (e) {
     var card = e.target.closest('.card');
-    if (card) location.hash = '#/work/' + card.getAttribute('data-slug');
+    if (card) location.hash = card.getAttribute('data-slug');
   });
 
   // Case study: same structure as the design.
@@ -89,11 +89,11 @@
 
     caseEl.innerHTML = html;
     document.getElementById('back').addEventListener('click', function () { location.hash = ''; });
-    document.getElementById('next').addEventListener('click', function () { location.hash = '#/work/' + next.slug; });
+    document.getElementById('next').addEventListener('click', function () { location.hash = next.slug; });
   }
 
   function route() {
-    var m = location.hash.match(/^#\/work\/([\w-]+)/);
+    var m = location.hash.match(/^#([\w-]+)$/);
     var w = m && WORKS.filter(function (x) { return x.slug === m[1]; })[0];
     if (w) {
       renderCase(w);
