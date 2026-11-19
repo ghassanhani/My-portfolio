@@ -22,12 +22,20 @@
     return '<span class="device"' + (style ? ' style="' + style + '"' : '') + '>' + (src ? img(src, alt) : '') + '</span>';
   }
 
-  // Work list. Every card gets the same cover: one framed image in the same spot.
+  // Card cover: the web screenshot in a browser frame, or the mobile one in a phone frame.
+  function cover(w) {
+    var phone = w.mobile && (!w.web || w.coverFrame === 'phone');
+    return '<span class="cover">' + (phone
+      ? '<span class="frame frame-phone">' + img(w.mobile, w.title + ' app screen') + '</span>'
+      : '<span class="frame frame-web"><span class="bar" aria-hidden="true"><i></i><i></i><i></i><b></b></span>' + img(w.web, w.title + ' website screen') + '</span>') + '</span>';
+  }
+
+  // Work list. All cards share one cover layout.
   function renderGrid() {
     var list = WORKS.filter(function (w) { return tab === 'all' || w.platforms.indexOf(tab) !== -1; });
     grid.innerHTML = list.map(function (w, i) {
       return '<button type="button" class="card rise" data-slug="' + esc(w.slug) + '" aria-label="Open ' + esc(w.title) + ' case study" style="animation-delay:' + (i * 90) + 'ms">' +
-        '<span class="cover"><span class="frame">' + img(w.cover, w.title + ' cover', '[Cover image]') + '</span></span>' +
+        cover(w) +
         '<span class="meta"><span class="title">' + esc(w.title) + '</span><span class="desc">' + esc(w.desc) + '</span></span>' +
         '</button>';
     }).join('');
@@ -76,8 +84,6 @@
       if (w.web) html += browser(w.web, w.title + ' website', '', both ? 'left:6%;top:12%;width:70%' : 'left:9%;top:11%;width:82%');
       if (w.mobile) html += device(w.mobile, w.title + ' app', both ? 'left:71%;top:20%;width:22%' : 'left:39%;top:8%;width:22%');
       html += '</div>';
-    } else if (w.cover) {
-      html += '<div class="cs-hero cs-hero-img rise" style="animation-delay:140ms"><img src="' + esc(w.cover) + '" alt="' + esc(w.title) + '"></div>';
     }
     if (meta.length) html += '<dl class="cs-meta rise" style="animation-delay:220ms">' + meta.map(function (m) { return '<div><dt>' + esc(m[0]) + '</dt><dd>' + esc(m[1]) + '</dd></div>'; }).join('') + '</dl>';
     var intro = text([['Overview', w.overview], ['The problem', w.problem]]);
