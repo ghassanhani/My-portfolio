@@ -143,7 +143,9 @@ html { scroll-padding-top: 80px; }
 .card .desc { font-size: 17px; line-height: 27px; color: var(--ink); }
 .card .byline { font-size: 15px; line-height: 22px; color: var(--muted); }
 
-.foot { font-size: 13px; color: var(--muted); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; font-size: 13px; color: var(--muted); }
+.foot nav { display: flex; gap: 16px; }
+.phone-no a { color: var(--ink); }
 
 /* Case study */
 .case { display: flex; flex-direction: column; gap: 48px; padding-bottom: 24px; }

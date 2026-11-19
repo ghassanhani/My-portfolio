@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghassan Hani — CV</title>
+<meta name="description" content="CV of Ghassan Hani, senior product designer in Barcelona.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .topbar-in { max-width: 1040px; }
+  .cv-page { max-width: 1040px; margin: 0 auto; padding: 104px 24px 96px; display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 48px; align-items: start; }
+  .cv-side { position: sticky; top: 88px; background: #F8F7F7; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; }
+  .cv-side .photo { width: 160px; height: 160px; border-radius: 24px; object-fit: cover; }
+  .cv-side h1 { margin: 28px 0 4px; font-size: 32px; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; }
+  .cv-side .role { margin: 0; font-size: 17px; color: var(--body); }
+  .cv-block { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 24px; }
+  .cv-block h2 { margin: 0 0 10px; font-size: 17px; font-weight: 600; }
+  .cv-block p { margin: 0; font-size: 14px; line-height: 22px; color: var(--ink); }
+  .cv-contact { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .cv-contact li { display: flex; align-items: center; gap: 14px; font-size: 15px; }
+  .cv-contact .ic { flex: none; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 10px; background: #fff; display: grid; place-items: center; color: var(--ink); }
+  .cv-contact a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .cv-contact a:hover { color: var(--body); }
+  .sep { color: var(--dot); padding: 0 6px; }
+
+  .cv-main { display: flex; flex-direction: column; }
+  .cv-main section + section { border-top: 1px solid var(--line); margin-top: 32px; padding-top: 32px; }
+  .cv-main h2 { margin: 0 0 20px; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .cv-main p { margin: 0; font-size: 15px; line-height: 25px; color: var(--body); }
+  .cv-main p + p { margin-top: 16px; }
+  .job { display: flex; flex-direction: column; gap: 14px; }
+  .job + .job { margin-top: 32px; }
+  .org { display: flex; align-items: center; gap: 16px; }
+  .cv-logo { flex: none; line-height: 1; padding: 0; width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; font-weight: 600; font-size: 18px; overflow: hidden; border: 1px solid var(--line); background: #fff; color: var(--ink); }
+  .cv-logo.dark { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .cv-logo.lime { background: #D7F94A; border-color: #D7F94A; }
+  .cv-logo.kadr { background: var(--ink); color: #D7F94A; border-color: var(--ink); }
+  .cv-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .org strong { display: block; font-size: 16px; font-weight: 600; }
+  .org div > span { display: block; font-size: 15px; color: var(--ink); }
+  .org a { font-size: 13px; font-weight: 400; color: var(--muted); text-decoration: underline; text-underline-offset: 2px; margin-left: 6px; }
+  .pos { margin: 6px 0 0; font-size: 14px; font-weight: 600; color: var(--body); }
+  .cv-main ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .cv-main li { font-size: 15px; line-height: 25px; color: var(--body); }
+  .cv-main b { color: var(--ink); font-weight: 500; }
+  .edu strong { display: block; font-size: 15px; font-weight: 600; }
+  .edu span { font-size: 15px; color: var(--body); }
+  .tb-pdf { color: var(--muted); }
+
+  @media (max-width: 860px) {
+    .cv-page { grid-template-columns: 1fr; padding: 96px 20px 64px; gap: 32px; }
+    .cv-side { position: static; padding: 24px; }
+    .cv-side .photo { width: 112px; height: 112px; border-radius: 20px; }
+  }
+  @media print {
+    .topbar { display: none; }
+    .cv-page { padding: 0; grid-template-columns: 260px 1fr; gap: 28px; }
+    .cv-side { position: static; }
+    .job, .org { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="topbar-in">
+    <a class="tb-back" href="./"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg><span>Portfolio</span></a>
+    <nav class="tb-nav" aria-label="CV">
+      <a href="assets/cv/Ghassan_Hani_CV.pdf" class="tb-link tb-pdf" download>Download PDF</a>
+      <a href="mailto:ghassanhani0@gmail.com" class="tb-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="cv-page">
+  <aside class="cv-side">
+    <img class="photo" src="assets/cv/portrait.jpg" alt="Portrait of Ghassan Hani" width="160" height="160">
+    <h1>Ghassan Hani</h1>
+    <p class="role">Senior Product Designer</p>
+
+    <div class="cv-block">
+      <ul class="cv-contact">
+        <li><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>Barcelona, Spain</li>
+        <li><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span><a href="mailto:ghassanhani0@gmail.com">ghassanhani0@gmail.com</a></li>
+        <li><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18h2"/></svg></span><a href="tel:+34617309488">+34617309488</a></li>
+        <li><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 0 0-4 0"/></svg></span><a href="https://www.linkedin.com/in/ghassanhani0/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><a href="./">Portfolio</a></li>
+        <li><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5M15 21v-3.5a3 3 0 0 0-.8-2.3c2.8-.3 5.8-1.4 5.8-6.2a4.8 4.8 0 0 0-1.3-3.3 4.5 4.5 0 0 0-.1-3.3s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.1 5.4 2.4 5.4 2.4a4.5 4.5 0 0 0-.1 3.3A4.8 4.8 0 0 0 4 9c0 4.8 3 5.9 5.8 6.2a3 3 0 0 0-.8 2.3V21"/></svg></span><a href="https://github.com/ghassanhani" target="_blank" rel="noopener">GitHub</a></li>
+        <li><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.6 3.7C13 8 15 13.5 15.6 20.3M3.1 10.6c6 .4 11.4-1 15.2-4.7M5.4 18.3c3.6-4.4 9.2-5.8 15.4-4"/></svg></span><a href="https://dribbble.com/ghassanhani0" target="_blank" rel="noopener">Dribbble</a></li>
+      </ul>
+    </div>
+
+    <div class="cv-block">
+      <h2>Tools</h2>
+      <p>Figma, Claude Design, Claude Code, Flutter, Supabase, Firebase, GitHub Actions, Adobe XD, Photoshop, Illustrator, Principle.</p>
+    </div>
+    <div class="cv-block">
+      <h2>Languages</h2>
+      <p>English<span class="sep">|</span>Arabic<span class="sep">|</span>Spanish</p>
+    </div>
+    <div class="cv-block">
+      <h2>Skills</h2>
+      <p>UI/UX Design, Design Systems, Arabic/RTL Design, User Research, Prototyping, Design-to-Code, AI Agent Design, A/B Testing, Information Architecture, Accessibility</p>
+    </div>
+    <div class="cv-block">
+      <h2>Interests</h2>
+      <p>Photography<span class="sep">|</span>TV shows<span class="sep">|</span>Video games<span class="sep">|</span>Gym<span class="sep">|</span>Football</p>
+    </div>
+  </aside>
+
+  <div class="cv-main">
+    <section>
+      <h2>About me</h2>
+      <p>I specialize in digitizing complex, traditional industries. As a core member of Sary (2018–2025), I architected the design system for MENA's fastest-growing B2B marketplace, streamlining the supply chain for thousands of businesses.</p>
+      <p>Today I bring that rigor to PropTech at Aamar and AI products at Thiqal, and I take my work from design to shipped code with Claude Design and Claude Code.</p>
+      <p>When I am not reimagining user experiences, I am a photographer, using my lens to find new perspectives on the world.</p>
+    </section>
+
+    <section>
+      <h2>Work experience</h2>
+      <div class="job">
+        <div class="org"><span class="cv-logo dark">T</span><div><strong>Thiqal Company</strong><span>Full time</span></div></div>
+        <p class="pos">Senior Product Designer | 2026 – Present</p>
+        <ul>
+          <li>Led end-to-end design for a large-scale platform — storefront web, admin dashboard and mobile app — on one scalable design system.</li>
+          <li>Took designs from Claude Design straight into working code with Claude Code, shortening the path from concept to build.</li>
+          <li>Designing an AI agent that helps Muslims navigate fatwa requests, built around accuracy and eliminating hallucinated answers.</li>
+          <li>Produced landing pages and pitch materials for Thiqal initiatives (Wathiq, Rajeh), plus client branding.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="org"><span class="cv-logo"><img src="assets/cv/aamar.png" alt="Aamar logo"></span><div><strong>Aamar</strong><span>Saudi Arabia | Part time</span></div></div>
+        <p class="pos">Senior Product Designer | 2023 – Present</p>
+        <ul>
+          <li>Spearheaded the 0-to-1 product design for the entire PropTech ecosystem, building the Tenant App, Owner App, and Website from the ground up.</li>
+          <li>Optimized the post-launch experience, specifically refining the critical "Add Unit" flow to streamline property listing for owners.</li>
+          <li>Established a unified design system across the Tenant and Owner apps, significantly reducing design-to-development handover time, and built a UX audit framework and yearly design roadmap.</li>
+          <li>Partnered with product managers and engineers across iOS, Android, and Web, and led weekly design reviews and coaching to upskill the team.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="org"><span class="cv-logo"><img src="assets/cv/sary.png" alt="Sary logo"></span><div><strong>Sary</strong><span>Saudi Arabia | Full time</span></div></div>
+        <p class="pos">Lead Product Designer | 2023 – 2025</p>
+        <ul>
+          <li><b>Design System 2.0 &amp; Operations:</b> Led the migration to Design System 2.0, introducing design tokens to bridge the gap between design and development.</li>
+          <li><b>Rebranding:</b> Executed a comprehensive brand overhaul and directed the redesign of the main marketing website.</li>
+          <li><b>Team Leadership:</b> Scaled the department by hiring and onboarding 3 Product Designers. Established hiring standards by conducting 20+ interviews.</li>
+        </ul>
+        <p class="pos">Senior Product Designer | 2020 – 2023</p>
+        <ul>
+          <li><b>Design System 1.0:</b> Built the company's first centralized Design System from scratch, moving the team from ad-hoc design to structure.</li>
+          <li><b>Advanced UX Research:</b> Conducted rigorous competitive analysis of 21+ global and local competitors, and built personas and user-interview rounds to validate feature sets.</li>
+          <li><b>Key Area Ownership:</b> Took full ownership of the Checkout experience, optimizing the flow to reduce friction and improve conversion metrics.</li>
+        </ul>
+        <p class="pos">Product Designer | 2018 – 2020</p>
+        <ul>
+          <li><b>Zero-to-One Architecture:</b> Joined as the first employee and delivered the end-to-end design for the Customer App, Driver App, and Admin Dashboard to launch the MVP, working directly with founders and engineers.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Designed &amp; built</h2>
+      <div class="job">
+        <div class="org"><span class="cv-logo lime">G</span><div><strong>Gymco <a href="https://gymcoapp.com/" target="_blank" rel="noopener">gymcoapp.com</a></strong><span>Founder | Design &amp; Code</span></div></div>
+        <ul>
+          <li>Diet and training app for lifters, designed in Claude Design and built solo in Flutter with Claude Code (190+ commits); in beta on TestFlight and Google Play in English, Arabic and Spanish.</li>
+          <li>Meal logging by text, voice, barcode or photo (Claude API), live workout tracking, adaptive weekly check-ins, streaks and an AI coach.</li>
+          <li>Supabase backend, Firebase, trilingual landing page, admin Control Center and GitHub Actions release pipeline.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="org"><span class="cv-logo kadr">K</span><div><strong>Kadr</strong><span>Video editing app | In development</span></div></div>
+        <p>A CapCut-style video editor for iOS, Android, Mac, Windows and web, built with Claude Code. Designed the brand identity, product UI and trilingual waitlist.</p>
+      </div>
+      <div class="job">
+        <div class="org"><span class="cv-logo">N</span><div><strong>Nasher</strong><span>Social media scheduler | Web app</span></div></div>
+        <p>A social media post scheduler web app — product design and build with Claude Design and Claude Code.</p>
+      </div>
+      <div class="job">
+        <div class="org"><span class="cv-logo">R</span><div><strong>REKO</strong><span>Gamified vocabulary app</span></div></div>
+        <p>English/Spanish vocabulary learning with an Arabic RTL interface, game mechanics and an original owl mascot, Kami.</p>
+      </div>
+      <div class="job">
+        <div class="org"><span class="cv-logo">B</span><div><strong>Black Knight Coffee</strong><span>Premium Arabic coffee e-commerce</span></div></div>
+        <p>Bilingual AR/EN homepage, product detail pages across six catalog types and an operations admin panel with OTP auth, as interactive token-based HTML prototypes.</p>
+      </div>
+      <div class="job">
+        <div class="org"><span class="cv-logo">RQ</span><div><strong>RATQ</strong><span>Quranic software marketplace</span></div></div>
+        <p>Community marketplace for Quranic software resources, with a full Arabic-first bilingual redesign.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="edu"><strong>Bachelor's, Multimedia &amp; Web Development</strong><span>Islamic University of Gaza</span></div>
+    </section>
+  </div>
+</main>
+<script>
+  (function () {
+    var t = document.getElementById('topbar');
+    function f() { t.classList.toggle('scrolled', window.scrollY > 4); }
+    window.addEventListener('scroll', f, { passive: true }); f();
+  })();
+</script>
+</body>
+</html>
