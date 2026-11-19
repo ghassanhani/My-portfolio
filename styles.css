@@ -104,6 +104,11 @@ button { font: inherit; color: inherit; }
 .cover .frame { position: absolute; transition: transform 1.6s var(--ease-out); will-change: transform; }
 .cover .frame-web { left: 10%; top: 10%; width: 80%; }
 .cover .frame-phone { left: 37%; top: 8%; width: 26%; }
+/* Three phones for app-only work: the middle one leads. */
+.trio-0, .trio-2 { position: absolute; top: 15%; width: 21%; }
+.trio-0 { left: 14%; }
+.trio-2 { left: 65%; }
+.trio-1 { position: absolute; left: 37.5%; top: 8%; width: 25%; z-index: 1; }
 /* Hover only ever affects the card under the pointer: no card looks "active" on its own. */
 @media (hover: hover) {
   .card:hover .cover { background-color: var(--panel-hover); }

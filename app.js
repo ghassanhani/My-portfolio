@@ -29,7 +29,11 @@
   }
 
   // Card cover: the web screenshot in a browser window, or the mobile one in a phone frame.
+  function trio(w, cls) {
+    return w.phones.map(function (src, i) { return device(src, w.title + ' app screen ' + (i + 1), '', cls + ' trio-' + i); }).join('');
+  }
   function cover(w) {
+    if (w.phones) return '<span class="cover">' + trio(w, 'frame') + '</span>';
     var phone = w.mobile && (!w.web || w.coverFrame === 'phone');
     return '<span class="cover">' + (phone
       ? device(w.mobile, w.title + ' app screen', '', 'frame frame-phone')
@@ -88,7 +92,9 @@
     var html = '';
     html += '<button type="button" class="cs-back rise" id="back"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>All work</button>';
     html += '<header class="cs-head rise" style="animation-delay:60ms"><span class="cs-tag">' + esc(w.tags || [web ? 'Web' : null, mob ? 'Mobile' : null].filter(Boolean).join(' · ')) + '</span><h1>' + esc(w.title) + '</h1><p>' + esc(w.desc) + '</p></header>';
-    if (w.web || w.mobile) {
+    if (w.phones && !w.web) {
+      html += '<div class="cs-hero rise" style="animation-delay:140ms">' + trio(w, '') + '</div>';
+    } else if (w.web || w.mobile) {
       var both = w.web && w.mobile;
       html += '<div class="cs-hero rise" style="animation-delay:140ms">';
       if (w.web) html += browser(w.web, w.title + ' website', '', both ? 'left:6%;top:12%;width:70%' : 'left:9%;top:11%;width:82%');
@@ -103,7 +109,10 @@
     });
     var middle = text([['Process', w.process], ['Solution', w.solution]]);
     if (middle) html += '<section class="cs-text">' + middle + '</section>';
-    if (ms.length) html += '<figure class="cs-fig"><div class="panel phones">' + ms.slice(0, 3).map(function (src, i) { return device(src, w.title + ' screen ' + (i + 1)); }).join('') + '</div>' + cap(w.mobileCaption) + '</figure>';
+    var groups = w.mobileGroups || (ms.length ? [{ screens: ms, caption: w.mobileCaption }] : []);
+    groups.forEach(function (g) {
+      html += '<figure class="cs-fig"><div class="panel phones">' + g.screens.slice(0, 3).map(function (src, i) { return device(src, w.title + ' screen ' + (i + 1)); }).join('') + '</div>' + cap(g.caption) + '</figure>';
+    });
     if (w.outcome || res.length) {
       html += '<section class="cs-outcome"><h2>Outcome</h2>' + (w.outcome ? '<p>' + esc(w.outcome) + '</p>' : '') + (res.length ? '<div class="cs-results">' +
         res.map(function (r) { return '<div><strong>' + esc(r.v) + '</strong><span>' + esc(r.l) + '</span></div>'; }).join('') + '</div>' : '') + '</section>';

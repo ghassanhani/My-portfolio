@@ -2,9 +2,11 @@
 // the case study only shows sections that have content.
 // platforms: which tabs it appears under ("web", "mobile" or both).
 // web / mobile: screenshots shown in a browser frame and a phone frame.
+// phones: three app screens shown side by side on the card and case study hero, for app-only work.
 // The card shows the web screenshot in a browser frame, or the mobile one in a phone frame
 // when there is no web screenshot or coverFrame is 'phone'.
 // webScreens / mobileScreens: more screens inside the case study ({ src, caption }).
+// mobileGroups: rows of three phone screens, each with a caption.
 // tags: the label above the case study title.
 // role, timeline, team, overview, problem, process, solution, outcome, results: case study text.
 var IMG = 'assets/works/';
@@ -16,16 +18,20 @@ window.WORKS = [
     role: 'Product Designer', timeline: '2026', tools: 'Figma'
   },
   {
-    slug: 'gymco', title: 'Gymco', tags: 'iOS · Android · Web',
-    desc: 'Diet and training for lifters. App, website and Control Center.',
-    platforms: ['web', 'mobile'],
-    web: IMG + 'gymco-web.jpg', mobile: IMG + 'gymco-today.jpg',
-    overview: 'Gymco is a diet and training app for lifters: log food in seconds, train with a plan and keep a streak worth protecting. It is one Flutter codebase for iOS and Android, in English, Arabic (fully right to left) and Spanish, with a website and a Control Center beside it.',
-    solution: 'Every screen is drawn from one component kit: the same icons, cards, chips, sheets, keypad, week strip and tab bar, with the same sizes, radii and colours. Food can be logged six ways, including typing a meal the way you would say it or photographing the plate and confirming each food it finds. An optional account backs up the whole diary, and the app never shows ads or sells data.',
-    webScreens: [{ src: IMG + 'gymco-web-2.jpg', caption: 'The Gymco website: six ways to log food, 870+ exercises and three languages.' }],
-    mobileScreens: [IMG + 'gymco-l1.jpg', IMG + 'gymco-r1.jpg', IMG + 'gymco-l2.jpg'],
-    mobileCaption: 'Logging food, the training plan and a workout in progress.',
-    results: [{ v: '6', l: 'ways to log food' }, { v: '870+', l: 'exercises with how-tos' }, { v: '3', l: 'languages, Arabic fully right to left' }]
+    slug: 'gymco', title: 'Gymco', tags: 'iOS · Android',
+    desc: 'Diet and training for lifters: log a meal in seconds, train to a plan, and keep a streak that rewards consistency, not starvation.',
+    platforms: ['mobile'], mobile: IMG + 'gymco-today.jpg',
+    phones: [IMG + 'gymco-write.jpg', IMG + 'gymco-today.jpg', IMG + 'gymco-workout.jpg'],
+    overview: 'Gymco brings food and training into one app for lifters, on iOS and Android, in English, Arabic and Spanish.',
+    problem: 'Lifters end up juggling two apps: one for food and one for training. Most food trackers make logging slow (search, scroll, guess grams), reward eating less over eating well, and treat Arabic as a mirrored afterthought. Training apps rarely know what you ate, and none of them adjust your targets based on what your body actually did.',
+    process: 'Every screen is built from one component kit drawn from the design prototype, so design and code don\'t drift. Arabic is designed in, not mirrored: IBM Plex Sans Arabic sits alongside Urbanist, and the serif accent word becomes bold lime sans. Going over or under on calories reads neutral, never red: the app coaches and doesn\'t shame. Losing too fast and genuine stalls each get their own screens with real options.',
+    solution: 'You can type or say a meal the way you would describe it, scan a barcode or photograph the plate, and the AI never guesses grams. Training reads as a day, not a spreadsheet: a week strip walks your plan and the live workout runs on a custom keypad. A weekly check-in adapts your targets from what your body actually did, and streaks count logging and training as planned, never eating less.',
+    mobileGroups: [
+      { screens: [IMG + 'gymco-iron.jpg', IMG + 'gymco-iron-tip.jpg', IMG + 'gymco-iron-program.jpg'], caption: 'Iron, the AI coach: what it can do, a daily tip and a program built from your numbers.' },
+      { screens: [IMG + 'gymco-progress.jpg', IMG + 'gymco-measure.jpg', IMG + 'gymco-strength.jpg'], caption: 'Progress: trend weight, body measurements and strength over time.' },
+      { screens: [IMG + 'gymco-awards.jpg', IMG + 'gymco-fasting.jpg', IMG + 'gymco-ramadan.jpg'], caption: 'Awards for consistency, the fasting timer and Ramadan mode.' }
+    ],
+    results: [{ v: '3', l: 'languages, Arabic designed right to left' }, { v: '2,000', l: 'exercises in the library' }, { v: '120 kcal', l: 'most a weekly check-in moves your target' }]
   },
   {
     slug: 'diwan-plus', title: 'Diwan+', tags: 'Web app · English & Arabic',
