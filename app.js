@@ -40,7 +40,7 @@
       : browser(w.web, w.title + ' website screen', '', '', 'frame frame-web')) + '</span>';
   }
   function byline(w) {
-    var parts = [w.client, w.role, w.timeline].filter(Boolean);
+    var parts = [w.client, w.role, w.year].filter(Boolean);
     return parts.length ? parts.join(' · ') : (w.tags || '');
   }
 
@@ -73,21 +73,26 @@
     var web = pl.indexOf('web') !== -1, mob = pl.indexOf('mobile') !== -1;
     var idx = WORKS.indexOf(w);
     var next = WORKS[(idx + 1) % WORKS.length];
-    var ms = w.mobileScreens || [];
-    var ws = w.webScreens || [];
     var res = w.results || [];
+    var list = function (v) { return Array.isArray(v) ? v.join(', ') : v; };
     var meta = [
       ['Role', w.role],
-      ['Timeline', w.timeline],
-      ['Platform', [web ? 'Web' : null, mob ? 'iOS & Android' : null].filter(Boolean).join(', ')],
-      ['Tools', w.tools],
-      ['Team', w.team]
+      ['Year', w.year],
+      ['Platform', w.platform || [web ? 'Web' : null, mob ? 'iOS & Android' : null].filter(Boolean).join(', ')],
+      ['Tools', list(w.tools)],
+      ['Technology', list(w.tech)]
     ].filter(function (m) { return m[1]; });
     function text(items) {
       items = items.filter(function (s) { return s[1]; });
       return items.length ? items.map(function (s) { return '<div><h2>' + esc(s[0]) + '</h2><p>' + esc(s[1]) + '</p></div>'; }).join('') : '';
     }
-    function cap(c) { return c ? '<figcaption>' + esc(c) + '</figcaption>' : ''; }
+    // One screen of the walkthrough: the screenshot in its frame, then its title and description.
+    function screen(sc, i) {
+      var frame = sc.phone ? '<div class="panel panel-phone">' + device(sc.src, w.title + ': ' + sc.title) + '</div>'
+        : '<div class="panel">' + browser(sc.src, w.title + ': ' + sc.title, '') + '</div>';
+      return '<figure class="cs-screen' + (sc.phone ? ' is-phone' : '') + '">' + frame +
+        '<figcaption><span class="cs-num">' + String(i + 1).padStart(2, '0') + '</span><h3>' + esc(sc.title) + '</h3><p>' + esc(sc.desc) + '</p></figcaption></figure>';
+    }
 
     var html = '';
     html += '<button type="button" class="cs-back rise" id="back"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>All work</button>';
@@ -104,15 +109,12 @@
     if (meta.length) html += '<dl class="cs-meta rise" style="animation-delay:220ms">' + meta.map(function (m) { return '<div><dt>' + esc(m[0]) + '</dt><dd>' + esc(m[1]) + '</dd></div>'; }).join('') + '</dl>';
     var intro = text([['Overview', w.overview], ['The problem', w.problem]]);
     if (intro) html += '<section class="cs-text rise" style="animation-delay:300ms">' + intro + '</section>';
-    ws.forEach(function (s) {
-      html += '<figure class="cs-fig"><div class="panel">' + browser(s.src, w.title + ' screen', '') + '</div>' + cap(s.caption) + '</figure>';
-    });
     var middle = text([['Process', w.process], ['Solution', w.solution]]);
     if (middle) html += '<section class="cs-text">' + middle + '</section>';
-    var groups = w.mobileGroups || (ms.length ? [{ screens: ms, caption: w.mobileCaption }] : []);
-    groups.forEach(function (g) {
-      html += '<figure class="cs-fig"><div class="panel phones">' + g.screens.slice(0, 3).map(function (src, i) { return device(src, w.title + ' screen ' + (i + 1)); }).join('') + '</div>' + cap(g.caption) + '</figure>';
-    });
+    var screens = w.screens || [];
+    if (screens.length) {
+      html += '<section class="cs-screens"><h2>' + screens.length + ' screens</h2><div class="cs-screen-list">' + screens.map(screen).join('') + '</div></section>';
+    }
     if (w.outcome || res.length) {
       html += '<section class="cs-outcome"><h2>Outcome</h2>' + (w.outcome ? '<p>' + esc(w.outcome) + '</p>' : '') + (res.length ? '<div class="cs-results">' +
         res.map(function (r) { return '<div><strong>' + esc(r.v) + '</strong><span>' + esc(r.l) + '</span></div>'; }).join('') + '</div>' : '') + '</section>';

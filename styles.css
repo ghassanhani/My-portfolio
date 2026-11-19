@@ -177,7 +177,8 @@ button { font: inherit; color: inherit; }
 .device img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .cs-hero .browser, .cs-hero .device { position: absolute; }
 
-.cs-meta { margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.cs-meta { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 24px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.cs-meta div:nth-child(n+4) { grid-column: span 3; }
 .cs-meta div { display: flex; flex-direction: column; gap: 4px; padding-bottom: 16px; }
 .cs-meta dt { font-size: 13px; color: var(--muted); }
 .cs-meta dd { margin: 0; font-size: 15px; line-height: 22px; }
@@ -211,6 +212,20 @@ button { font: inherit; color: inherit; }
 }
 .cs-back:focus-visible, .cs-next:focus-visible, .pill:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 
+/* Screen walkthrough: web screens run full width, phone screens sit two to a row. */
+.cs-screens { display: flex; flex-direction: column; gap: 24px; }
+.cs-screens > h2 { margin: 0; font-size: 20px; line-height: 28px; font-weight: 600; }
+.cs-screen-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 24px; }
+.cs-screen { margin: 0; display: flex; flex-direction: column; gap: 16px; grid-column: span 2; min-width: 0; }
+.cs-screen.is-phone { grid-column: span 1; }
+.cs-screen .panel { border-radius: 24px; background: var(--panel); padding: 40px; container-type: inline-size; }
+.cs-screen .panel-phone { display: flex; justify-content: center; padding: 32px 24px; }
+.cs-screen .panel-phone .device { width: 62%; }
+.cs-screen figcaption { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; row-gap: 4px; }
+.cs-num { grid-row: span 2; font-size: 13px; line-height: 26px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.cs-screen h3 { margin: 0; font-size: 17px; line-height: 26px; font-weight: 600; }
+.cs-screen p { margin: 0; font-size: 15px; line-height: 24px; color: var(--body); }
+
 /* Phone */
 @media (max-width: 640px) {
   .page { padding: 40px 20px 64px; gap: 40px; }
@@ -226,6 +241,11 @@ button { font: inherit; color: inherit; }
   .case { gap: 36px; }
   .cs-head h1 { font-size: 30px; }
   .cs-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cs-meta div:nth-child(n+4) { grid-column: span 2; }
+  .cs-screen-list { gap: 40px 12px; }
+  .cs-screen .panel { padding: 14px; border-radius: 16px; }
+  .cs-screen .panel-phone { padding: 16px 12px; }
+  .cs-screen .panel-phone .device { width: 80%; }
   .cs-fig .panel { padding: 14px; }
   .cs-fig .phones { gap: 8px; }
   .cs-results { grid-template-columns: 1fr; }
