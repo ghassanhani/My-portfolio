@@ -14,7 +14,7 @@ window.WORKS = [
     desc: 'One design language for a specialty coffee storefront, an app and an operations console.',
     platforms: ['web', 'mobile'], web: IMG + 'bn-home.jpg',
     role: 'Product Designer', year: '2026', platform: 'Web, iOS & Android',
-    tools: ['Figma', 'Claude'], tech: ['Design system and tokens', 'Hugeicons', 'React prototypes', 'Arabic and English (RTL and LTR)'],
+    tools: ['Figma', 'Claude'], tech: ['Design system and tokens', 'Hugeicons', 'React prototypes', 'Arabic and English (RTL and LTR)', 'Typeface: BK (Arabic), Inter (English)'],
     overview: 'Black Knight is a Saudi specialty coffee roastery in Al Khobar. It sources coffee from more than 20 countries, roasts it in a 5,280 m² factory, one of the largest specialty coffee factories in Saudi Arabia, and sells single origins, signature blends, drip bags and Saudi Arabic coffee to homes, cafés and retailers. I designed one design language for its online store, app and operations console, Arabic first and in English.',
     process: 'Every flow was mapped state by state before handoff. Checkout alone covers 49 states, from loading an address and a rejected discount code to a declined instalment plan and an expired session, so engineering never has to guess what a screen does. Each flow also has a "case stories" board that walks through its states frame by frame on desktop and phone.',
     solution: 'One design system, built on the brand\'s own typeface, carries the store from the home page to the account. The product page leads with the coffee, the basket and checkout make delivery, payment and points clear before you pay, and the account keeps every order, point and address in one place.',
@@ -28,7 +28,14 @@ window.WORKS = [
       { src: IMG + 'bn-orders.jpg', title: 'My orders', desc: 'Each order says what it is waiting for. Unpaid orders and items added later carry a clear amount due and a pay button.' },
       { src: IMG + 'bn-points.jpg', title: 'My points', desc: 'The balance and what it is worth in riyals, then every point earned, pending, redeemed, returned or expired, with the order it came from.' },
       { src: IMG + 'bn-wishlist.jpg', title: 'Wishlist', desc: 'Saved coffees with their rating, price and origin, one tap from the basket.' },
-      { src: IMG + 'bn-addresses.jpg', title: 'Addresses', desc: 'Saved addresses across the Gulf with a default, and a plain note when an address is missing something it needs before it can be used.' }
+      { src: IMG + 'bn-addresses.jpg', title: 'Addresses', desc: 'Saved addresses across the Gulf with a default, and a plain note when an address is missing something it needs before it can be used.' },
+      { src: IMG + 'bnc-overview.jpg', title: 'Console · Overview', desc: 'The operations console opens on the day: sales, orders, customers and average order value against the previous period, what needs attention (new orders, approvals, low stock, reviews) and sales by channel.' },
+      { src: IMG + 'bnc-orders.jpg', title: 'Console · Orders', desc: 'Every order with its channel, payment, delivery and status, in eight tabs from new to returned, searchable by order number, customer, mobile or tracking number.' },
+      { src: IMG + 'bnc-order.jpg', title: 'Console · Order detail', desc: 'Items with their SKU and weight, what is inside each box, the payment summary, the customer and the order\'s activity, with preparing, duplicating and cancelling one click away.' },
+      { src: IMG + 'bnc-products.jpg', title: 'Console · Products', desc: 'The catalogue with type, category, price, stock, status and labels, filtered by origin, availability and approval.' },
+      { src: IMG + 'bnc-product.jpg', title: 'Console · Product', desc: 'One coffee\'s record: sales, and every specification (origin, process, region, variety, body, notes, altitude) with whether it shows in the store.' },
+      { src: IMG + 'bnc-codes.jpg', title: 'Console · Discount codes', desc: 'Every code with its discount, usage, period and status, including affiliate codes and campaign codes like National Day and Ramadan.' },
+      { src: IMG + 'bnc-reports.jpg', title: 'Console · Reports', desc: 'Sales over time grouped by day, week or month, with refunds, discounts, delivery and VAT broken out for each day.' }
     ],
     results: [{ v: '20+', l: 'countries of origin' }, { v: '5,280 m²', l: 'roasting factory in Al Khobar' }, { v: '49', l: 'checkout states designed' }]
   },
@@ -81,6 +88,51 @@ window.WORKS = [
       { phone: true, src: IMG + 'mk-zakat.jpg', title: 'Zakat calculator', desc: 'Nisab by gold or silver, the assets a full year has passed on, and 2.5% worked out in plain, tested code.' }
     ],
     results: [{ v: '6,236', l: 'ayat, verified against the source' }, { v: '0', l: 'accounts, ads or trackers' }, { v: '4', l: 'schools of fiqh, side by side' }]
+  },
+  {
+    slug: 'kadr', title: 'Kadr', tags: 'Web · Desktop · iOS · Android',
+    desc: 'A video editor for everyday creators, with AI tools that run on credits and a full timeline when you need it.',
+    platforms: ['web', 'mobile'], web: IMG + 'kd-editor.jpg',
+    role: 'Founder · Product design', year: '2026', platform: 'Web, macOS, Windows, iOS & Android',
+    tools: ['Claude', 'Claude Code'], tech: ['Kadr design system (tokens and components)', 'Inter, Geist Mono and Readex Pro', 'English, Arabic and Spanish'],
+    overview: 'Kadr is a video editor for everyday creators. Projects sync across desktop, web and phone, and AI tools such as auto captions, script to video, translation and background removal sit next to a full multi-track timeline.',
+    process: 'Every screen type in a leading mobile editor was mapped and redesigned, then carried to web and desktop with shared components: a top bar, a tool rail, an inspector and the timeline. AI actions always show their credit cost before you run them, and tools that run on the device say so.',
+    solution: 'A simple editor for quick edits, an advanced mode with edit, colour, audio and deliver pages for detailed work, and templates people can remix. Arabic is designed right to left, and the waiting list, store pages and app are in English, Arabic and Spanish.',
+    screens: [
+      { src: IMG + 'kd-projects.jpg', title: 'Projects', desc: 'Quick AI tools with their credit cost, and recent drafts synced across desktop, web and phone.' },
+      { src: IMG + 'kd-editor.jpg', title: 'Editor', desc: 'Media, the preview and an inspector for the selected text, above a timeline with text, stickers, captions, video and audio tracks.' },
+      { src: IMG + 'kd-captions.jpg', title: 'Auto captions', desc: 'Speech becomes timed captions in 130+ languages. The dialog says what it will cost and what your balance will be before you confirm.' },
+      { src: IMG + 'kd-color.jpg', title: 'Advanced · Color', desc: 'Node-based grading with lift, gamma, gain and offset wheels and live scopes, for when a quick filter is not enough.' },
+      { src: IMG + 'kd-script.jpg', title: 'Script to video', desc: 'Describe the video, pick a length, voice and look, and edit the scene-by-scene script before anything is generated.' },
+      { src: IMG + 'kd-translate.jpg', title: 'Translate video', desc: 'Translate a video\'s speech and captions into another language, with each task\'s progress listed beside it.' },
+      { phone: true, src: IMG + 'kd-tools.jpg', title: 'Mobile · All tools', desc: 'Every tool on one screen, from photo editing and auto cut to teleprompter and upscale, with Pro tools marked.' },
+      { phone: true, src: IMG + 'kd-caption-style.jpg', title: 'Mobile · Caption style', desc: 'Highlight, karaoke and pop styles, highlight colour, size and position, applied to one caption or all of them.' },
+      { phone: true, src: IMG + 'kd-teleprompter.jpg', title: 'Mobile · Teleprompter', desc: 'Your script scrolls as you speak and pauses when you stop, with speed and text size under your thumb.' },
+      { phone: true, src: IMG + 'kd-templates.jpg', title: 'Mobile · Template feed', desc: 'Browse templates full screen, see what each uses, and swap in your own clips in one tap.' }
+    ]
+  },
+  {
+    slug: 'reko', title: 'REKO', tags: 'iOS · Android · English & Arabic',
+    desc: 'Your words. Your books. Ten minutes a day. A vocabulary app for grown-ups.',
+    platforms: ['mobile'], mobile: IMG + 'rk-home.jpg',
+    phones: [IMG + 'rk-flashcard.jpg', IMG + 'rk-home.jpg', IMG + 'rk-reader.jpg'],
+    role: 'Product Designer', year: '2026', platform: 'iOS & Android',
+    tools: ['Claude'], tech: ['FSRS spaced repetition', 'Baloo Bhaijaan 2 and Rubik', 'English and Arabic (RTL)', 'Light and dark themes'],
+    overview: 'REKO is a vocabulary app for grown-ups who already speak a language and want the words they actually meet, from their own uploads or from courses built on its database. Kami, the owl, is the one fixed character.',
+    process: 'Each language gets its own colour so two never blur together. Lessons favour retrieval over recognition: flashcards with honest next-review dates, typed cloze, reverse cards and writing your own sentence. Streaks forgive a missed day, and there is no score and no shame.',
+    solution: 'Add words by typing, pasting a list, importing a CSV, photographing text, uploading a book or pasting a link. Read your own books with new words tinted, tap a word to save it with the sentence it came from, and review in ten minutes a day.',
+    screens: [
+      { phone: true, src: IMG + 'rk-onboarding.jpg', title: 'Meet Kami', desc: 'Two questions and you start: the language the app speaks, then what you want to learn.' },
+      { phone: true, src: IMG + 'rk-home.jpg', title: 'Home', desc: 'Today\'s path through new words, listening and grammar, with reviews due and your streak at the top.' },
+      { phone: true, src: IMG + 'rk-flashcard.jpg', title: 'Flashcard', desc: 'The word in the sentence you met it in. Again, hard, good and easy show the real date of the next review.' },
+      { phone: true, src: IMG + 'rk-cloze.jpg', title: 'Fill the gap', desc: 'Type the missing word, so you retrieve it rather than recognise it. Small typos count as almost, not wrong.' },
+      { phone: true, src: IMG + 'rk-use-it.jpg', title: 'Use it', desc: 'Write your own sentence and get optional feedback that suggests a more natural way to say it.' },
+      { phone: true, src: IMG + 'rk-reader.jpg', title: 'Book reader', desc: 'Read your own books with new words tinted, learning words underlined and known words left plain.' },
+      { phone: true, src: IMG + 'rk-word-tap.jpg', title: 'Tap a word', desc: 'See what it means here, in English and Arabic, and save it with the sentence it came from.' },
+      { phone: true, src: IMG + 'rk-word-card.jpg', title: 'Word card', desc: 'Where you met the word, what it goes with, false friends and when it is next due.' },
+      { phone: true, src: IMG + 'rk-progress.jpg', title: 'Progress', desc: 'Words known, retention, time this week, how much of the 3,000 most common words you know, and what is coming up.' },
+      { phone: true, src: IMG + 'rk-done.jpg', title: 'Done for today', desc: 'What you reviewed and learned, your recall and streak, and the choice to stop or do five more minutes.' }
+    ]
   },
   {
     slug: 'diwan-plus', title: 'Diwan+', tags: 'Web app · English & Arabic',
