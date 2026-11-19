@@ -13,6 +13,7 @@ window.WORKS = [
     slug: 'kadr', title: 'Kadr', tags: 'Web · Desktop · iOS · Android',
     desc: 'A video editor for everyday creators, with AI tools that run on credits and a full timeline when you need it.',
     platforms: ['web', 'mobile'], web: IMG + 'kd-editor.jpg',
+    phones: [IMG + 'kd-caption-style.jpg', IMG + 'kd-tools.jpg', IMG + 'kd-teleprompter.jpg'],
     role: 'Founder · Product design', year: '2026', platform: 'Web, macOS, Windows, iOS & Android',
     tools: ['Claude', 'Claude Code'], tech: ['Kadr design system (tokens and components)', 'Inter, Geist Mono and Readex Pro', 'English, Arabic and Spanish'],
     overview: 'Kadr is a video editor for everyday creators. Projects sync across desktop, web and phone, and AI tools such as auto captions, script to video, translation and background removal sit next to a full multi-track timeline.',
@@ -103,7 +104,7 @@ window.WORKS = [
   {
     slug: 'black-night', title: 'Black Night', tags: 'Web · App · Console',
     desc: 'One design language for a specialty coffee storefront, an app and an operations console.',
-    platforms: ['web', 'mobile'], web: IMG + 'bn-home.jpg',
+    platforms: ['web'], web: IMG + 'bn-home.jpg',
     role: 'Product Designer', year: '2026', platform: 'Web, iOS & Android',
     tools: ['Figma', 'Claude'], tech: ['Design system and tokens', 'Hugeicons', 'React prototypes', 'Arabic and English (RTL and LTR)', 'Typeface: BK (Arabic), Inter (English)'],
     overview: 'Black Knight is a Saudi specialty coffee roastery in Al Khobar. It sources coffee from more than 20 countries, roasts it in a 5,280 m² factory, one of the largest specialty coffee factories in Saudi Arabia, and sells single origins, signature blends, drip bags and Saudi Arabic coffee to homes, cafés and retailers. I designed one design language for its online store, app and operations console, Arabic first and in English.',

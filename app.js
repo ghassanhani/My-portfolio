@@ -32,8 +32,9 @@
   function trio(w, cls) {
     return w.phones.map(function (src, i) { return device(src, w.title + ' app screen ' + (i + 1), '', cls + ' trio-' + i); }).join('');
   }
+  // The cover follows the tab: phones under Mobile, the browser under Web.
   function cover(w) {
-    if (w.phones) return '<span class="cover">' + trio(w, 'frame') + '</span>';
+    if (w.phones && (tab === 'mobile' || !w.web)) return '<span class="cover">' + trio(w, 'frame') + '</span>';
     var phone = w.mobile && (!w.web || w.coverFrame === 'phone');
     return '<span class="cover">' + (phone
       ? device(w.mobile, w.title + ' app screen', '', 'frame frame-phone')
@@ -56,6 +57,9 @@
   }
 
   tabs.forEach(function (b) {
+    var t = b.getAttribute('data-tab');
+    var n = WORKS.filter(function (w) { return t === 'all' || w.platforms.indexOf(t) !== -1; }).length;
+    b.insertAdjacentHTML('beforeend', ' <span class="count">' + n + '</span>');
     b.addEventListener('click', function () {
       tab = b.getAttribute('data-tab');
       tabs.forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });

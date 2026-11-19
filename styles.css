@@ -96,6 +96,8 @@ html { scroll-padding-top: 80px; }
   transition: background-color .2s, color .2s, border-color .2s;
 }
 .pill:hover { color: var(--ink); }
+.pill .count { margin-left: 2px; font-size: 13px; color: var(--faint); font-variant-numeric: tabular-nums; }
+.pill[aria-selected="true"] .count { color: var(--muted); }
 .pill[aria-selected="true"] { background: var(--pill); border-color: var(--pill); color: var(--ink); }
 
 /* Work list: one large card per row. Every cover is a screenshot in a browser window
