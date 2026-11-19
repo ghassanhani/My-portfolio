@@ -28,9 +28,17 @@ window.WORKS = [
     results: [{ v: '6', l: 'ways to log food' }, { v: '870+', l: 'exercises with how-tos' }, { v: '3', l: 'languages, Arabic fully right to left' }]
   },
   {
-    slug: 'diwan-plus', title: 'Diwan+', tags: 'Website',
+    slug: 'diwan-plus', title: 'Diwan+', tags: 'Web app · English & Arabic',
     desc: 'Redesigning the entire experience of the platform.',
-    platforms: ['web'], web: IMG + 'diwan-web.jpg'
+    platforms: ['web'], web: IMG + 'diwan-web.jpg',
+    overview: 'Diwan+ is a platform where brands run influencer campaigns, from the brief to the results. Brands, influencers, reports and payments sit in one place, in English and Arabic.',
+    solution: 'Each campaign opens on an overview of its performance: GMV, revenue, payout, orders and the influencers behind them, with the brief and its links and codes beside it. From there the team reviews applications, assigns influencers and follows each submission from script to published content.',
+    webScreens: [
+      { src: IMG + 'diwan-campaigns.jpg', caption: 'All campaigns, filtered by status and campaign type.' },
+      { src: IMG + 'diwan-influencers.jpg', caption: 'The influencers on a campaign, with links, codes, clicks, conversions and revenue.' },
+      { src: IMG + 'diwan-applications.jpg', caption: 'Reviewing applications from influencers who want to join a campaign.' },
+      { src: IMG + 'diwan-submission.jpg', caption: 'Following a submission from script to content.' }
+    ]
   },
   {
     slug: 'ifynx', title: 'iFynx', tags: 'Website · English & Arabic',
