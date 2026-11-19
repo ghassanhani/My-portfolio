@@ -95,7 +95,6 @@
     }
 
     var html = '';
-    html += '<button type="button" class="cs-back rise" id="back"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>All work</button>';
     html += '<header class="cs-head rise" style="animation-delay:60ms"><span class="cs-tag">' + esc(w.tags || [web ? 'Web' : null, mob ? 'Mobile' : null].filter(Boolean).join(' · ')) + '</span><h1>' + esc(w.title) + '</h1><p>' + esc(w.desc) + '</p></header>';
     if (w.phones && !w.web) {
       html += '<div class="cs-hero rise" style="animation-delay:140ms">' + trio(w, '') + '</div>';
@@ -123,9 +122,26 @@
       '<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></button>';
 
     caseEl.innerHTML = html;
-    document.getElementById('back').addEventListener('click', function () { location.hash = ''; });
     document.getElementById('next').addEventListener('click', function () { location.hash = next.slug; });
   }
+
+  // Fixed header: brand on home; back link and the project title (once its heading scrolls away) on a case study.
+  var topbar = document.getElementById('topbar');
+  var tbBack = document.getElementById('tb-back');
+  var tbTitle = document.getElementById('tb-title');
+  var brand = topbar.querySelector('.brand');
+  tbBack.addEventListener('click', function () { location.hash = ''; });
+  function onScroll() {
+    topbar.classList.toggle('scrolled', window.scrollY > 4);
+    var h = !caseEl.hidden && caseEl.querySelector('.cs-head h1');
+    tbTitle.classList.toggle('show', !!h && h.getBoundingClientRect().bottom < 64);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  document.getElementById('tb-work').addEventListener('click', function (e) {
+    e.preventDefault();
+    if (location.hash) location.hash = '';
+    requestAnimationFrame(function () { document.querySelector('.work').scrollIntoView({ behavior: 'smooth' }); });
+  });
 
   function route() {
     var m = location.hash.match(/^#([\w-]+)$/);
@@ -135,12 +151,15 @@
       home.hidden = true;
       caseEl.hidden = false;
       document.title = w.title + ' — Ghassan';
+      tbTitle.textContent = w.title;
     } else {
       caseEl.hidden = true;
       home.hidden = false;
       document.title = 'Ghassan — Senior Product Designer';
     }
+    brand.hidden = !!w; tbBack.hidden = !w;
     window.scrollTo(0, 0);
+    onScroll();
   }
 
   window.addEventListener('hashchange', route);
