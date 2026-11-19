@@ -45,45 +45,53 @@
     if (card) location.hash = card.getAttribute('data-slug');
   });
 
-  // Case study: same structure as the design.
+  // Case study: same structure as the design. Sections without real content are left out.
   function renderCase(w) {
     var pl = w.platforms || ['web'];
-    var web = pl.indexOf('web') !== -1, mob = pl.indexOf('mobile') !== -1, both = web && mob;
+    var web = pl.indexOf('web') !== -1, mob = pl.indexOf('mobile') !== -1;
     var idx = WORKS.indexOf(w);
     var next = WORKS[(idx + 1) % WORKS.length];
     var ms = w.mobileScreens || [];
-    var shot1 = (w.webScreens && w.webScreens[0]) || '';
-    var res = w.results || [{ v: '[Metric]', l: '[What changed]' }, { v: '[Metric]', l: '[What changed]' }, { v: '[Metric]', l: '[What changed]' }];
+    var ws = w.webScreens || [];
+    var res = w.results || [];
     var meta = [
-      ['Role', w.role || '[Your role]'],
-      ['Timeline', w.timeline || '[Year · length]'],
+      ['Role', w.role],
+      ['Timeline', w.timeline],
       ['Platform', [web ? 'Web' : null, mob ? 'iOS & Android' : null].filter(Boolean).join(', ')],
-      ['Team', w.team || '[Who you worked with]']
-    ];
+      ['Tools', w.tools],
+      ['Team', w.team]
+    ].filter(function (m) { return m[1]; });
     function text(items) {
-      return items.map(function (s) { return '<div><h2>' + esc(s[0]) + '</h2><p>' + esc(s[1]) + '</p></div>'; }).join('');
+      items = items.filter(function (s) { return s[1]; });
+      return items.length ? items.map(function (s) { return '<div><h2>' + esc(s[0]) + '</h2><p>' + esc(s[1]) + '</p></div>'; }).join('') : '';
     }
+    function cap(c) { return c ? '<figcaption>' + esc(c) + '</figcaption>' : ''; }
 
     var html = '';
     html += '<button type="button" class="cs-back rise" id="back"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>All work</button>';
     html += '<header class="cs-head rise" style="animation-delay:60ms"><span class="cs-tag">' + esc(w.tags || [web ? 'Web' : null, mob ? 'Mobile' : null].filter(Boolean).join(' · ')) + '</span><h1>' + esc(w.title) + '</h1><p>' + esc(w.desc) + '</p></header>';
-    html += '<div class="cs-hero rise" style="animation-delay:140ms">';
-    if (web) html += browser(w.web, w.title + ' website', '[Website hero screenshot]', both ? 'left:6%;top:12%;width:70%' : 'left:9%;top:11%;width:82%');
-    if (mob) html += device(w.mobile, w.title + ' mobile app', both ? 'left:71%;top:20%;width:22%' : 'left:39%;top:8%;width:22%');
-    html += '</div>';
-    html += '<dl class="cs-meta rise" style="animation-delay:220ms">' + meta.map(function (m) { return '<div><dt>' + esc(m[0]) + '</dt><dd>' + esc(m[1]) + '</dd></div>'; }).join('') + '</dl>';
-    html += '<section class="cs-text rise" style="animation-delay:300ms">' + text([
-      ['Overview', w.overview || '[What the product is, who it is for and what you were asked to do]'],
-      ['The problem', w.problem || '[The user and business problem, and why it mattered]']
-    ]) + '</section>';
-    if (web) html += '<figure class="cs-fig"><div class="panel">' + browser(shot1, w.title + ' key screen', '[Key website screen]') + '</div><figcaption>' + esc(w.webCaption || '[Caption: what this screen shows]') + '</figcaption></figure>';
-    html += '<section class="cs-text">' + text([
-      ['Process', w.process || '[Research, key decisions, trade-offs and iterations]'],
-      ['Solution', w.solution || '[What you designed and how it solves the problem]']
-    ]) + '</section>';
-    if (mob) html += '<figure class="cs-fig"><div class="panel phones">' + [0, 1, 2].map(function (i) { return device(ms[i], w.title + ' mobile screen ' + (i + 1)); }).join('') + '</div><figcaption>' + esc(w.mobileCaption || '[Caption: the mobile flow shown here]') + '</figcaption></figure>';
-    html += '<section class="cs-outcome"><h2>Outcome</h2><p>' + esc(w.outcome || '[What happened after launch: adoption, feedback, what you learned]') + '</p><div class="cs-results">' +
-      res.map(function (r) { return '<div><strong>' + esc(r.v) + '</strong><span>' + esc(r.l) + '</span></div>'; }).join('') + '</div></section>';
+    if (w.web || w.mobile) {
+      var both = w.web && w.mobile;
+      html += '<div class="cs-hero rise" style="animation-delay:140ms">';
+      if (w.web) html += browser(w.web, w.title + ' website', '', both ? 'left:6%;top:12%;width:70%' : 'left:9%;top:11%;width:82%');
+      if (w.mobile) html += device(w.mobile, w.title + ' app', both ? 'left:71%;top:20%;width:22%' : 'left:39%;top:8%;width:22%');
+      html += '</div>';
+    } else if (w.cover) {
+      html += '<div class="cs-hero cs-hero-img rise" style="animation-delay:140ms"><img src="' + esc(w.cover) + '" alt="' + esc(w.title) + '"></div>';
+    }
+    if (meta.length) html += '<dl class="cs-meta rise" style="animation-delay:220ms">' + meta.map(function (m) { return '<div><dt>' + esc(m[0]) + '</dt><dd>' + esc(m[1]) + '</dd></div>'; }).join('') + '</dl>';
+    var intro = text([['Overview', w.overview], ['The problem', w.problem]]);
+    if (intro) html += '<section class="cs-text rise" style="animation-delay:300ms">' + intro + '</section>';
+    ws.forEach(function (s) {
+      html += '<figure class="cs-fig"><div class="panel">' + browser(s.src, w.title + ' screen', '') + '</div>' + cap(s.caption) + '</figure>';
+    });
+    var middle = text([['Process', w.process], ['Solution', w.solution]]);
+    if (middle) html += '<section class="cs-text">' + middle + '</section>';
+    if (ms.length) html += '<figure class="cs-fig"><div class="panel phones">' + ms.slice(0, 3).map(function (src, i) { return device(src, w.title + ' screen ' + (i + 1)); }).join('') + '</div>' + cap(w.mobileCaption) + '</figure>';
+    if (w.outcome || res.length) {
+      html += '<section class="cs-outcome"><h2>Outcome</h2>' + (w.outcome ? '<p>' + esc(w.outcome) + '</p>' : '') + (res.length ? '<div class="cs-results">' +
+        res.map(function (r) { return '<div><strong>' + esc(r.v) + '</strong><span>' + esc(r.l) + '</span></div>'; }).join('') + '</div>' : '') + '</section>';
+    }
     html += '<button type="button" class="cs-next" id="next" aria-label="Next project: ' + esc(next.title) + '"><span class="panel"><span class="label"><small>Next project</small><strong>' + esc(next.title) + '</strong></span>' +
       '<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></button>';
 
