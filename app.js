@@ -87,9 +87,13 @@
       return items.length ? items.map(function (s) { return '<div><h2>' + esc(s[0]) + '</h2><p>' + esc(s[1]) + '</p></div>'; }).join('') : '';
     }
     // One screen of the walkthrough: the screenshot in its frame, then its title and description.
+    // Long pages scroll inside their frame.
     function screen(sc, i) {
-      var frame = sc.phone ? '<div class="panel panel-phone">' + device(sc.src, w.title + ': ' + sc.title) + '</div>'
-        : '<div class="panel">' + browser(sc.src, w.title + ': ' + sc.title, '') + '</div>';
+      var alt = w.title + ': ' + sc.title;
+      var hint = '<span class="scroll-hint" aria-hidden="true">Scroll</span>';
+      var frame = sc.phone
+        ? '<div class="panel panel-phone"><span class="device scrolls"><span class="view" role="region" tabindex="0" aria-label="' + esc(alt) + ', scrollable">' + img(sc.src, alt) + '</span>' + hint + '</span></div>'
+        : '<div class="panel"><span class="browser scrolls">' + BAR + '<span class="view" role="region" tabindex="0" aria-label="' + esc(alt) + ', scrollable">' + img(sc.src, alt) + '</span>' + hint + '</span></div>';
       return '<figure class="cs-screen' + (sc.phone ? ' is-phone' : '') + '">' + frame +
         '<figcaption><span class="cs-num">' + String(i + 1).padStart(2, '0') + '</span><h3>' + esc(sc.title) + '</h3><p>' + esc(sc.desc) + '</p></figcaption></figure>';
     }
@@ -122,6 +126,13 @@
       '<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span></button>';
 
     caseEl.innerHTML = html;
+    // Show the scroll hint only on frames whose screenshot is taller than the frame.
+    Array.prototype.forEach.call(caseEl.querySelectorAll('.scrolls'), function (f) {
+      var v = f.querySelector('.view'), im = v.querySelector('img');
+      function check() { f.classList.toggle('is-long', v.scrollHeight > v.clientHeight + 8); }
+      if (im) { im.addEventListener('load', check); if (window.ResizeObserver) new ResizeObserver(check).observe(im); requestAnimationFrame(check); }
+      v.addEventListener('scroll', function () { f.classList.toggle('scrolled', v.scrollTop > 8); }, { passive: true });
+    });
     document.getElementById('next').addEventListener('click', function () { location.hash = next.slug; });
   }
 

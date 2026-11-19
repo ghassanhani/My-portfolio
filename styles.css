@@ -251,6 +251,25 @@ html { scroll-padding-top: 80px; }
 .cs-screen h3 { margin: 0; font-size: 17px; line-height: 26px; font-weight: 600; }
 .cs-screen p { margin: 0; font-size: 15px; line-height: 24px; color: var(--body); }
 
+/* Scrollable frames for long pages */
+.scrolls { position: relative; }
+.scrolls .view { display: block; overflow-y: auto; overscroll-behavior: auto; scrollbar-width: thin; scrollbar-color: rgb(10 13 18 / 22%) transparent; outline: none; }
+.browser.scrolls .view { aspect-ratio: 16 / 10; }
+.device.scrolls .view { height: 100%; }
+.scrolls .view img { width: 100%; height: auto; aspect-ratio: auto; object-fit: initial; }
+.scrolls .view:focus-visible { box-shadow: inset 0 0 0 2px var(--ink); }
+.scroll-hint {
+  position: absolute; left: 50%; bottom: 12px; transform: translate(-50%, 6px);
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px;
+  background: rgb(10 13 18 / 72%); color: #fff; font-size: 12px; font-weight: 500;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  opacity: 0; pointer-events: none; transition: opacity .4s var(--ease-out), transform .4s var(--ease-out);
+}
+.scroll-hint::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+.scrolls.is-long .scroll-hint { opacity: 1; transform: translate(-50%, 0); }
+.scrolls.is-long.scrolled .scroll-hint { opacity: 0; }
+.device.scrolls .scroll-hint { font-size: 11px; padding: 5px 10px; bottom: 10px; }
+
 /* Phone */
 @media (max-width: 640px) {
   .tb-link { display: none; }
