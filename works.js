@@ -14,8 +14,16 @@ window.WORKS = [
   {
     slug: 'black-night', title: 'Black Night', tags: 'Web · App · Console',
     desc: 'One design language for a storefront, an app and an operations console.',
-    platforms: ['web', 'mobile'], web: IMG + 'black-night-web.jpg',
-    role: 'Product Designer', timeline: '2026', tools: 'Figma'
+    platforms: ['web', 'mobile'], web: IMG + 'black-night-basket.jpg',
+    role: 'Product Designer', timeline: '2026', tools: 'Figma',
+    overview: 'Black Knight is a Saudi specialty coffee roastery. I designed the shopping experience across its storefront, app and operations console, in Arabic first and in English.',
+    process: 'Every flow was mapped state by state before handoff. Checkout alone covers 49 states, from loading an address and a rejected discount code to a declined instalment plan and an expired session, so engineering never has to guess what a screen does.',
+    solution: 'The basket shows what is inside each box and how far you are from free delivery. Checkout runs in three steps, with mada, card, Apple Pay, Tabby and Tamara, and lets you spend loyalty points before you pay. In the account, each order shows its status and what is still due, and the wishlist sends saved coffees straight to the basket.',
+    webScreens: [
+      { src: IMG + 'black-night-checkout.jpg', caption: 'Checkout, step 3: payment methods, discount code and loyalty points.' },
+      { src: IMG + 'black-night-orders.jpg', caption: 'My orders: what each order is waiting for, and what is still due.' },
+      { src: IMG + 'black-night-wishlist.jpg', caption: 'The wishlist, one tap from the basket.' }
+    ]
   },
   {
     slug: 'gymco', title: 'Gymco', tags: 'iOS · Android',
