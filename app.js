@@ -66,7 +66,7 @@
 
     var html = '';
     html += '<button type="button" class="cs-back rise" id="back"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>All work</button>';
-    html += '<header class="cs-head rise" style="animation-delay:60ms"><span class="cs-tag">' + [web ? 'Web' : null, mob ? 'Mobile' : null].filter(Boolean).join(' · ') + '</span><h1>' + esc(w.title) + '</h1><p>' + esc(w.desc) + '</p></header>';
+    html += '<header class="cs-head rise" style="animation-delay:60ms"><span class="cs-tag">' + esc(w.tags || [web ? 'Web' : null, mob ? 'Mobile' : null].filter(Boolean).join(' · ')) + '</span><h1>' + esc(w.title) + '</h1><p>' + esc(w.desc) + '</p></header>';
     html += '<div class="cs-hero rise" style="animation-delay:140ms">';
     if (web) html += browser(w.web, w.title + ' website', '[Website hero screenshot]', both ? 'left:6%;top:12%;width:70%' : 'left:9%;top:11%;width:82%');
     if (mob) html += device(w.mobile, w.title + ' mobile app', both ? 'left:71%;top:20%;width:22%' : 'left:39%;top:8%;width:22%');
