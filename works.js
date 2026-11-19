@@ -33,11 +33,6 @@ window.WORKS = [
     platforms: ['web'], web: IMG + 'diwan-web.jpg'
   },
   {
-    slug: 'rageh', title: 'RAGeh', tags: 'Web app · Console',
-    desc: 'Retrieval-augmented answers for one of the largest Islamic Q&A archives.',
-    platforms: ['web'], mobile: IMG + 'rageh-app.jpg'
-  },
-  {
     slug: 'ifynx', title: 'iFynx', tags: 'Website · English & Arabic',
     desc: 'Website for a digital product studio across MENA and Europe.',
     platforms: ['web'], web: IMG + 'ifynx-web.jpg',
@@ -56,13 +51,5 @@ window.WORKS = [
     platforms: ['web', 'mobile'], web: IMG + 'seera-web.jpg', mobile: IMG + 'seera-mobile.jpg',
     overview: 'Seera (سيرة) is a clothing label: from Gaza, built in Barcelona. Chapter 01 is built in exile and worn with memory. The site is a single page where people join the waitlist for the first drop.',
     solution: 'One page with a header, a Chapter 01 hero and a sign-up form that turns into a success panel, designed for desktop and phone. Type is Inter Tight and Instrument Serif with IBM Plex Sans Arabic for the wordmark and Arabic text. The form never loses an email silently: it shows a clear error when sign-ups can\'t be saved, and treats someone already on the list like a new sign-up.'
-  },
-  {
-    slug: 'thiqal-icons', title: 'Thiqal Icons', tags: 'Icon library',
-    desc: 'One shared icon library for every Thiqal product, from Figma to code.',
-    platforms: ['web'], web: IMG + 'thiqal-icons-web.jpg',
-    overview: 'A shared library of icons used across Thiqal applications, so every product speaks the same visual language.',
-    solution: 'Each icon is drawn in Figma in two silhouettes, sharp and rounded, and up to five styles: stroke, solid, twotone, duotone and bulk. The SVGs are generated into React components that inherit the text colour, so one CSS colour drives both tones of a duotone icon. Apps pick a style by import path and get the same component name in every style.',
-    results: [{ v: '3,897', l: 'icons' }, { v: '7', l: 'styles of every icon' }, { v: '489', l: 'brand logos and flags' }]
   }
 ];
