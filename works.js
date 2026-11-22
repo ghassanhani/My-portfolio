@@ -179,5 +179,29 @@ window.WORKS = [
       { phone: true, src: IMG + 'mk-zakat.jpg', title: 'Zakat calculator', desc: 'Nisab by gold or silver, the assets a full year has passed on, and 2.5% worked out in plain, tested code.' }
     ],
     results: [{ v: '6,236', l: 'ayat, verified against the source' }, { v: '0', l: 'accounts, ads or trackers' }, { v: '4', l: 'schools of fiqh, side by side' }]
+  },
+  {
+    slug: 'itqan', title: 'Itqan Community', tags: 'Web · Mobile web · Arabic',
+    desc: 'A community for people building Quranic technology: open-source projects, discussions, events and the people behind them.',
+    platforms: ['web', 'mobile'], web: IMG + 'iq-home.jpg',
+    phones: [IMG + 'iq-m-saved.jpg', IMG + 'iq-m-home.jpg', IMG + 'iq-m-home-dark.jpg'],
+    role: 'Product Designer', year: '2026', platform: 'Web and mobile web, Arabic (RTL)',
+    tools: ['Claude Design'], tech: ['ITQAN design system (tokens and components)', 'Thmanyah Sans and Thmanyah Serif Display', 'Arabic, right to left', 'Light and dark themes'],
+    overview: 'Itqan brings together developers, researchers and makers who serve the Quran through technology. The community platform is where they discuss open-source projects, share tools and research, follow events and find each other.',
+    problem: 'Conversations about Quranic software were scattered across chat groups and repositories, so good answers got lost and newcomers could not tell where a project stood or who to ask.',
+    process: 'Every screen is built from the ITQAN design system, Arabic first and right to left, with a calm teal palette and a light and dark theme from the same tokens. I explored four layouts for the home page and kept the reading column the same across them, so only the way pinned and featured posts are shown changes.',
+    solution: 'A discussion list with clear signals: pinned posts, new replies since your last visit, the community each thread belongs to, votes and reactions. Ten sections, upcoming events, people you may want to follow and a monthly newsletter sit beside it, and the same model works on the phone with a bottom bar.',
+    screens: [
+      { src: IMG + 'iq-home.jpg', title: 'Home with welcome banner', desc: 'The welcome banner, then all 548 topics sorted by latest activity, with sections, upcoming events, people to follow and the newsletter on the side.' },
+      { src: IMG + 'iq-rail.jpg', title: 'Pinned rail', desc: 'Pinned posts as a row of cards at the top, so announcements and the community guide stay one glance away.' },
+      { src: IMG + 'iq-spot.jpg', title: 'Spotlight', desc: 'One featured post with its image leads, and the other pinned posts sit beside it as a short list.' },
+      { src: IMG + 'iq-saved.jpg', title: 'Saved topics', desc: 'The topics you saved, with how many have new replies, in the same list as the main feed.' },
+      { src: IMG + 'iq-home-dark.jpg', title: 'Dark theme', desc: 'The same home in the dark theme, built from the same design tokens.' },
+      { src: IMG + 'iq-rail-dark.jpg', title: 'Pinned rail, dark', desc: 'The pinned rail layout in the dark theme, with the event photos and badges kept readable.' },
+      { phone: true, src: IMG + 'iq-m-home.jpg', title: 'Mobile home', desc: 'Pinned posts scroll sideways, then the discussions with filter tabs for following, saved, projects and developers.' },
+      { phone: true, src: IMG + 'iq-m-saved.jpg', title: 'Mobile saved', desc: 'Saved topics on the phone, with the bottom bar for home, sections, a new post, notifications and your account.' },
+      { phone: true, src: IMG + 'iq-m-home-dark.jpg', title: 'Mobile home, dark', desc: 'The mobile home in the dark theme.' },
+      { phone: true, src: IMG + 'iq-m-saved-dark.jpg', title: 'Mobile saved, dark', desc: 'Saved topics in the dark theme.' }
+    ]
   }
 ];
