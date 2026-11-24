@@ -60,6 +60,29 @@ window.WORKS = [
     results: [{ v: '3', l: 'languages, Arabic designed right to left' }, { v: '2,000', l: 'exercises in the library' }, { v: '120 kcal', l: 'most a weekly check-in moves your target' }]
   },
   {
+    slug: 'nasher', title: 'Nasher', tags: 'Web app · SaaS',
+    desc: 'Schedule once, post everywhere: a social media scheduler for your own accounts and your clients\' accounts.',
+    platforms: ['web'], web: IMG + 'ns-home.jpg', demo: 'https://nasher.gsanhani.com',
+    role: 'Founder · Design and code', year: '2026', platform: 'Web',
+    tools: ['Claude Design', 'Claude Code'], tech: ['Next.js on Cloudflare Workers (OpenNext)', 'Supabase Postgres', 'Instagram, TikTok, YouTube, Facebook, Threads and LinkedIn APIs', 'Claude API for captions', 'MCP server with OAuth 2.1', 'Untitled UI tokens and Lucide icons', 'Vitest with PGlite'],
+    overview: 'Nasher (الناشر) schedules Instagram, TikTok, YouTube, Facebook, Threads and LinkedIn posts across your own brands and your clients\' brands, and keeps publishing while your laptop is off. I designed it and built it end to end.',
+    problem: 'Freelancers and small teams who post for several brands juggle each platform\'s app, its limits and its login, and a post that fails at 2am stays failed until someone notices.',
+    process: 'One queue in Postgres drives everything. Every minute the publisher claims due posts so nothing posts twice, refreshes tokens about to expire, publishes and stores the result. Temporary errors retry after 2, 5 and 15 minutes, then show as Failed with the platform\'s own message and a Retry button. Platform tokens are encrypted and only server code touches the data.',
+    solution: 'A dashboard that says what goes out today and what needs you, a week and month calendar with a list view, a composer with a live preview per platform and AI captions, an ideas board, insights with the best times to post, and brands that group each client\'s channels. Claude can also write and schedule posts through Nasher\'s MCP connector.',
+    screens: [
+      { src: IMG + 'ns-home.jpg', title: 'Dashboard', desc: 'Today at a glance: scheduled, published, the best time to post and what needs attention, the publishing queue, next up and Ask Nasher.' },
+      { src: IMG + 'ns-publish.jpg', title: 'Publish, week', desc: 'The week as a calendar with each post on its channel, today\'s queue beside it and ideas ready to turn into posts.' },
+      { src: IMG + 'ns-month.jpg', title: 'Publish, month', desc: 'The whole month at once, with each post\'s time and channel on its day.' },
+      { src: IMG + 'ns-list.jpg', title: 'Queue', desc: 'The same posts as a list by day, with queue, drafts and sent tabs and the status on every channel.' },
+      { src: IMG + 'ns-new.jpg', title: 'Create post', desc: 'Pick channels, write once or with AI, add a first comment and media, and see a live preview of the post before you schedule it.' },
+      { src: IMG + 'ns-ideas.jpg', title: 'Ideas board', desc: 'Ideas move from unassigned to done, and any idea can become a scheduled post.' },
+      { src: IMG + 'ns-insights.jpg', title: 'Insights', desc: 'Reach, engagement, likes and comments against the previous period, reach over twelve months, the best times to post, and Arabic against English posts.' },
+      { src: IMG + 'ns-accounts.jpg', title: 'Brands and channels', desc: 'Each channel grouped under its brand, how its posts go out, Telegram reminders for posts you publish by hand, and the brand voice the AI writes in.' },
+      { src: IMG + 'ns-connect.jpg', title: 'Connect a channel', desc: 'Instagram, TikTok, Facebook, Threads, YouTube and LinkedIn, each with its own official sign-in.' },
+      { src: IMG + 'ns-login.jpg', title: 'Sign in', desc: 'A magic-link sign-in beside the promise: all your channels, one queue, your time zone.' }
+    ]
+  },
+  {
     slug: 'diwan-plus', title: 'Diwan+', tags: 'Web app · English & Arabic',
     desc: 'Redesigning the entire experience of MENA\'s largest UGC platform.',
     platforms: ['web'], web: IMG + 'dw-overview.jpg',
@@ -205,29 +228,6 @@ window.WORKS = [
       { phone: true, src: IMG + 'iq-m-saved.jpg', title: 'Mobile saved', desc: 'Saved topics on the phone, with the bottom bar for home, sections, a new post, notifications and your account.' },
       { phone: true, src: IMG + 'iq-m-home-dark.jpg', title: 'Mobile home, dark', desc: 'The mobile home in the dark theme.' },
       { phone: true, src: IMG + 'iq-m-saved-dark.jpg', title: 'Mobile saved, dark', desc: 'Saved topics in the dark theme.' }
-    ]
-  },
-  {
-    slug: 'nasher', title: 'Nasher', tags: 'Web app · SaaS',
-    desc: 'Schedule once, post everywhere: a social media scheduler for your own accounts and your clients\' accounts.',
-    platforms: ['web'], web: IMG + 'ns-home.jpg', demo: 'https://nasher.gsanhani.com',
-    role: 'Founder · Design and code', year: '2026', platform: 'Web',
-    tools: ['Claude Design', 'Claude Code'], tech: ['Next.js on Cloudflare Workers (OpenNext)', 'Supabase Postgres', 'Instagram, TikTok, YouTube, Facebook, Threads and LinkedIn APIs', 'Claude API for captions', 'MCP server with OAuth 2.1', 'Untitled UI tokens and Lucide icons', 'Vitest with PGlite'],
-    overview: 'Nasher (الناشر) schedules Instagram, TikTok, YouTube, Facebook, Threads and LinkedIn posts across your own brands and your clients\' brands, and keeps publishing while your laptop is off. I designed it and built it end to end.',
-    problem: 'Freelancers and small teams who post for several brands juggle each platform\'s app, its limits and its login, and a post that fails at 2am stays failed until someone notices.',
-    process: 'One queue in Postgres drives everything. Every minute the publisher claims due posts so nothing posts twice, refreshes tokens about to expire, publishes and stores the result. Temporary errors retry after 2, 5 and 15 minutes, then show as Failed with the platform\'s own message and a Retry button. Platform tokens are encrypted and only server code touches the data.',
-    solution: 'A dashboard that says what goes out today and what needs you, a week and month calendar with a list view, a composer with a live preview per platform and AI captions, an ideas board, insights with the best times to post, and brands that group each client\'s channels. Claude can also write and schedule posts through Nasher\'s MCP connector.',
-    screens: [
-      { src: IMG + 'ns-home.jpg', title: 'Dashboard', desc: 'Today at a glance: scheduled, published, the best time to post and what needs attention, the publishing queue, next up and Ask Nasher.' },
-      { src: IMG + 'ns-publish.jpg', title: 'Publish, week', desc: 'The week as a calendar with each post on its channel, today\'s queue beside it and ideas ready to turn into posts.' },
-      { src: IMG + 'ns-month.jpg', title: 'Publish, month', desc: 'The whole month at once, with each post\'s time and channel on its day.' },
-      { src: IMG + 'ns-list.jpg', title: 'Queue', desc: 'The same posts as a list by day, with queue, drafts and sent tabs and the status on every channel.' },
-      { src: IMG + 'ns-new.jpg', title: 'Create post', desc: 'Pick channels, write once or with AI, add a first comment and media, and see a live preview of the post before you schedule it.' },
-      { src: IMG + 'ns-ideas.jpg', title: 'Ideas board', desc: 'Ideas move from unassigned to done, and any idea can become a scheduled post.' },
-      { src: IMG + 'ns-insights.jpg', title: 'Insights', desc: 'Reach, engagement, likes and comments against the previous period, reach over twelve months, the best times to post, and Arabic against English posts.' },
-      { src: IMG + 'ns-accounts.jpg', title: 'Brands and channels', desc: 'Each channel grouped under its brand, how its posts go out, Telegram reminders for posts you publish by hand, and the brand voice the AI writes in.' },
-      { src: IMG + 'ns-connect.jpg', title: 'Connect a channel', desc: 'Instagram, TikTok, Facebook, Threads, YouTube and LinkedIn, each with its own official sign-in.' },
-      { src: IMG + 'ns-login.jpg', title: 'Sign in', desc: 'A magic-link sign-in beside the promise: all your channels, one queue, your time zone.' }
     ]
   }
 ];
