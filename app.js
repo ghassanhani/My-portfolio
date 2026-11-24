@@ -103,7 +103,7 @@
     }
 
     var html = '';
-    html += '<header class="cs-head rise" style="animation-delay:60ms"><span class="cs-tag">' + esc(w.tags || [web ? 'Web' : null, mob ? 'Mobile' : null].filter(Boolean).join(' · ')) + '</span><h1>' + esc(w.title) + '</h1><p>' + esc(w.desc) + '</p></header>';
+    html += '<header class="cs-head rise" style="animation-delay:60ms"><span class="cs-tag">' + esc(w.tags || [web ? 'Web' : null, mob ? 'Mobile' : null].filter(Boolean).join(' · ')) + '</span><h1>' + esc(w.title) + '</h1><p>' + esc(w.desc) + '</p>' + (w.demo ? '<a class="cs-demo" href="' + esc(w.demo) + '" target="_blank" rel="noopener">Live demo <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>' : '') + '</header>';
     if (w.phones && !w.web) {
       html += '<div class="cs-hero rise" style="animation-delay:140ms">' + trio(w, '') + '</div>';
     } else if (w.web || w.mobile) {
